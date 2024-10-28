@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main(void) {
+   int numbers[20], temp;
+   
+   scanf("%d", &numbers[0]);      // get numbers[0] to get the total size 
+   for(int i = 1; i <= numbers[0]; i++)    // scan and store from 1 to totalSize to stay away from trash values 
+   {
+      scanf("%d", &numbers[i]);
+   }
+   
+   for (int i = 1; i <= numbers[0]; i++)   // ignore numbers[0] and sort eveything else, then print index 1 and 2
+   {
+      for (int j = 1; j <= numbers[0] - i; j++)   // last idex will be sorted after every iteration, so total - i
+      {
+         if (numbers[j] > numbers[j+1])
+         {
+            temp = numbers[j];
+            numbers[j] = numbers[j+1];
+            numbers[j+1] = temp;
+         }
+      }
+   }
+   
+   printf("%d and %d\n", numbers[1], numbers[2]);
+   
+
+   return 0;
+}

@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main(void) {
+   const int NUM_ELEMENTS = 20;         // Number of input integers
+   int userVals[NUM_ELEMENTS];    // Array to hold the user's input integers
+   
+   
+   for(int i = 0; i< NUM_ELEMENTS; i++){   // user inputs 6 elements and the compiler stores 14 trash values 
+      scanf("%d", &userVals[i]);
+   }
+   
+   for(int j = userVals[0]; j >0 ;j--)    // you only want to read userVals[0] elements because the first int tells you how many ints follow therefore you wont be reading the trash values 
+   {
+      printf("%d,", userVals[j]);
+   }
+   printf("\n");
+   
+   
+   return 0;
+}

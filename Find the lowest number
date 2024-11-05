@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+int FindLowestNum()
+{
+   // keep scanning until num > 0
+   // store numbers in an array and return the smallest 
+   int num, size = 2, array[size], i = 0, smallestNum;
+   
+   scanf("%d", &num);      // do this outside the loop to scan and store the first number into the array as well
+   array[i] = num;
+   i++;
+   while (num <= 0)
+   {
+      scanf("%d", &num);
+      array[i] = num;
+      i++;
+      size++;
+   }
+   smallestNum = array[0]; // keep this outside the loop so you dont redeclare 
+   for (int i = 0; i < (sizeof(array) / sizeof(array[0])); i++)
+   {
+         if (array[i+1] < smallestNum)
+            smallestNum = array[i+1];
+   }
+
+   return smallestNum;
+}
+
+int main() {
+	int minVal;
+
+	minVal = FindLowestNum();
+
+	printf("%d\n", minVal);
+
+	return 0;
+}

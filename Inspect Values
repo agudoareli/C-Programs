@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+int InspectValues()
+{
+   int num, size = 1, nums[size], i = 0, negativeCount = 0;
+   do 
+   {
+      scanf("%d", &num);
+      nums[i] = num;
+      i++;
+      size++;
+      // create an array to store all values
+      // loop the array, if all are negative, return 1, otherwise return 0
+   }while (num != 99);
+   
+   for(int i = 0; i < (sizeof(nums) / sizeof(nums[0])); i++)
+   {
+      if (nums[i] < 0)
+      {
+         negativeCount += 1;
+      }
+   }
+   
+   if (negativeCount == (sizeof(nums) / sizeof(nums[0])))
+      return 1;
+   else
+      return 0;
+
+}
+
+int main() {
+	int allNegative;
+
+	allNegative = InspectValues();
+
+	if (allNegative) {
+		printf("All true\n");
+	}
+	else {
+		printf("Not all true\n");
+	}
+
+	return 0;
+}

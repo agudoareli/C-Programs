@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+    int size;
+    char arr[10][10];
+    char c;
+
+    scanf("%d", &size);     // scan int
+    for (int i = 0; i < size; i++)  // scan int words
+    {
+        scanf("%s", arr[i]);
+    }
+    scanf(" %c", &c);   // scan char
+
+    for (int i = 0; i < size; i++)  // output every word in the list that contains the char 
+    {
+        if (strchr(arr[i], c) != NULL)
+            printf("%s,", arr[i]);
+    }
+    printf("\n");
+
+   return 0;
+}

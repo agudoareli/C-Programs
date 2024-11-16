@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main(void) {
+
+   char arr1[50], arr2[50];
+   int j = 0;
+   fgets(arr1, 50, stdin);
+
+   for (int i = 0; arr1[i] != '\0'; i++)
+   {
+    if (isalpha(arr1[i]))
+    {
+        arr2[j] = arr1[i];
+        j++;
+    }
+   }
+   arr2[j] = '\0';
+   printf("%s\n", arr2);
+
+
+   return 0;
+}

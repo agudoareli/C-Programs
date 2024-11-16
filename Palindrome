@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main(void) {
+   
+   char phraseForward[50], phraseBackwards[50], forwardWithoutSpaces[50];
+
+   fgets(phraseForward, 50, stdin);
+   int i, j = 0, l = 0;
+   
+   for (i = strlen(phraseForward)-1; i >= 0; i--)
+   {
+      // exclude whitespace from being copied 
+      if (isblank(phraseForward[i]))
+         i--;
+      phraseBackwards[j] = phraseForward[i];       
+      j++; 
+   }
+   phraseBackwards[j] = '\0';
+   //printf("B: %s\n", phraseBackwards);
+   
+   // read forwards without spaces and then compare 
+   for (int k = 0; phraseForward[k] != '\0'; k++)
+   {
+      if (isblank(phraseForward[k]))
+         k++;
+      forwardWithoutSpaces[l] = phraseForward[k];
+      l++;
+   }
+   forwardWithoutSpaces[l] = '\0';
+   //printf("Without spaces: %s\n", forwardWithoutSpaces);
+
+   if (strcmp(phraseBackwards, forwardWithoutSpaces) == 0)
+      printf("palindrome: %s\n", phraseForward);
+   else
+      printf("not a palindrome: %s\n", phraseForward);
+
+   return 0;
+}

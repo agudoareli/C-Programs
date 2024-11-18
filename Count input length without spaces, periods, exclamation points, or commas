@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+
+int main(void) {
+   
+   char arr[50];
+   int counter = 0;
+   
+   fgets(arr, 50, stdin);
+   
+   for (int i = 0; arr[i] != '\0'; i++)
+   {
+      if (!(isblank(arr[i])) && arr[i] != '.' && 
+      arr[i] != '!' && arr[i] != ',')
+         counter++;
+   }
+   printf("%d\n", counter);   
+   
+   return 0;
+}

@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+
+
+int main(void) {
+    int counter = 0;
+    char arr[3][50];
+    int Done, done, d, i, j;
+
+    // store strcmp() return values into Done, done, d
+    // keep reading into fgets arr[counter] until strcmp() returns a nonzero value 
+    // break program when strcmp() returns a nonzero value
+    do 
+    {
+        fgets(arr[counter], 50, stdin);
+        //printf("%s",arr[counter]);
+        
+       Done = strcmp(arr[counter], "Done\n");  // Done is an int, strcmp() will return an int based on result 
+       done = strcmp("done\n", arr[counter]);  // int done equals 0 or a non-zero int 
+       d = strcmp("d\n", arr[counter]);
+
+        counter++;
+
+    }while(Done != 0 && done != 0 && d != 0 && counter < 10);  // erro: stops until counter reaches 10
+    arr[0][strlen(arr[0])-1] = '\0';
+       
+    // print the 2D array backwards from 2 nested for loops 
+    for (i = 0; i < counter-1; i++)    // start printing at the first string
+    {
+        for (j = strlen(arr[i])-1; j >= 0; j--)  // print the first string in reverse order 
+        {
+            printf("%c", arr[i][j]);
+
+        }
+    }
+    printf("\n");
+   
+    return 0;
+}

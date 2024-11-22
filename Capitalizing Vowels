@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h> // for malloc()
+#include <string.h>
+
+char* CapVowels(char* original) {
+    char* updatedStr = NULL;
+    updatedStr = (char*)malloc(strlen(original)*sizeof(char));  // set a dynamic size  
+    strcpy(updatedStr, original);
+   // given a string, capitalize each vowel and return updated pointer
+  // only capitalize the first occurence 
+    if (strchr(updatedStr, 'a') != NULL)  // if a is found 
+        *strchr(updatedStr, 'a') = 'A';   // value at this address is now A
+    if (strchr(updatedStr, 'e') != NULL)
+        *strchr(updatedStr, 'e') = 'E';
+    if (strchr(updatedStr, 'i') != NULL)
+        *strchr(updatedStr, 'i') = 'I';
+    if (strchr(updatedStr, 'o') != NULL)
+        *strchr(updatedStr, 'o') = 'O';
+    if (strchr(updatedStr, 'u') != NULL)
+        *strchr(updatedStr, 'u') = 'U';
+   
+    // all are if because i want ALL conditions checked 
+    
+    return updatedStr;    // updatedStr is a pointer, so an address will be returned 
+}
+
+int main(void) {
+   char userCaption[50];
+   char* resultStr;
+   scanf("%s", userCaption);
+
+   resultStr = CapVowels(userCaption);
+
+   printf("Original: %s\n", userCaption);
+   printf("Modified: %s\n", resultStr);
+   
+   // Always free dynamically allocated memory when no longer needed
+  free(resultStr);
+   
+   return 0;
+}

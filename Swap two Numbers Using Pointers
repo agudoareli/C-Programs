@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h> // for malloc()
+
+typedef struct Number_struct {
+	int num;
+} Number;
+
+void Swap(Number* numPtr1, Number* numPtr2) {
+	Number* tempPtr = NULL; // initialize to null
+    tempPtr = (Number*)malloc(sizeof(Number));  // set a dynamic size to point to
+    tempPtr->num = numPtr1->num;  // tempPtr value equals numPtr1 value
+    numPtr1->num = numPtr2->num;    // value at numPtr1 is now value at numPtr2
+    numPtr2->num = tempPtr->num;    //value at numPtr2 is now value at tempPtr
+
+    free(tempPtr);  // why is the value still usable in main after freeing()?
+    // after the values are swapped through the pointers, main does not use the tempPtr anymore, 
+    // so, you can free() here
+}
+
+int main(void) {
+	Number* num1 = NULL;
+	Number* num2 = NULL;
+
+	num1 = (Number*)malloc(sizeof(Number));
+	num2 = (Number*)malloc(sizeof(Number));
+
+	int int1;
+	int int2;
+
+	scanf("%d", &int1);
+	scanf("%d", &int2);
+
+	num1->num = int1;
+	num2->num = int2;
+
+	Swap(num1, num2);
+	printf("num1 = %d, num2 = %d\n",  num1->num, num2->num);
+
+    
+    free(num1); // free() so you are not wasting unnecessary dynamic memory
+    free(num2);
+
+	return 0;
+}

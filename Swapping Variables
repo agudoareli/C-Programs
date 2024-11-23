@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+void SwapValues(int* userVal1, int* userVal2, int* userVal3, int* userVal4) // expects int pointers (aka int addresses)
+{
+    int temp1, temp2;
+    
+    // swap the first with the second
+    temp1 = *userVal1;  // dereference the pointer to change its value 
+    *userVal1 = *userVal2;
+    *userVal2 = temp1;
+    // swap the third with the fourth
+    temp2 = *userVal3;
+    *userVal3 = *userVal4;
+    *userVal4 = temp2;
+
+    return;
+}
+
+int main(void) {
+
+    int userVal1, userVal2, userVal3, userVal4;
+   // scan 4 ints 
+   scanf("%d", &userVal1);
+   scanf("%d", &userVal2);
+   scanf("%d", &userVal3);
+   scanf("%d", &userVal4);
+   // call function 
+   SwapValues(&userVal1, &userVal2, &userVal3, &userVal4);// pointer parameter expects an address argument 
+   // print the swapped values on a single line 
+   printf("%d %d %d %d\n", userVal1, userVal2, userVal3, userVal4); 
+    return 0;
+}

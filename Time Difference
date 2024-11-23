@@ -1,0 +1,80 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Time_struct {
+   int hours;
+   int minutes;
+   int seconds;
+} Time;
+
+// Allocate and return a Time as per parameters
+Time* CreateTime(int hours, int minutes, int seconds) {
+   Time* newTime = NULL;
+   newTime = (Time*)malloc(3*sizeof(int));  // set a dynamic size because the size is unknown
+
+   newTime->hours = hours;
+   newTime->minutes = minutes;
+   newTime->seconds = seconds;
+
+   return newTime;  // newTime is a pointer, so an address is returned 
+   
+}
+
+// Read integers hours, minutes, seconds;
+// create and return a Time using the input values
+Time* ReadTime() {
+   int hours;
+   int minutes;
+   int seconds;
+   scanf("%d %d %d", &hours, &minutes, &seconds);
+
+   return CreateTime(hours, minutes, seconds);
+}
+
+Time* TimeDifference(Time* end, Time* start) {
+   Time* diff = NULL;
+   int startSeconds, endSeconds, totalSeconds;
+   diff = (Time*)malloc(3*sizeof(int));     // set dynamic size because the size is unknown
+
+    startSeconds = (3600 * start->hours) + (60 * start->minutes) + start->seconds;
+    endSeconds = (3600 * end->hours) + (60 * end->minutes) + end->seconds;
+    totalSeconds = endSeconds - startSeconds;
+   
+   diff->hours = totalSeconds / 3600;
+   totalSeconds %= 3600;
+   diff->minutes = totalSeconds / 60;
+   totalSeconds %= 60;
+   diff->seconds = totalSeconds;
+
+    return diff;    // difference pointer to time
+   
+  }
+
+void PrintTime(Time* t) {
+   printf("%02d:%02d:%02d", t->hours, t->minutes, t->seconds);
+}
+
+int main(void) {
+   Time* start = NULL;
+   Time* end = NULL;
+   Time* difference = NULL;
+
+   start = ReadTime();
+   end = ReadTime();
+   difference = TimeDifference(end, start);
+
+   printf("Start:\t");
+   PrintTime(start);
+   printf("\nEnd:\t");
+   PrintTime(end);
+   printf("\nDifference: ");
+   PrintTime(difference);
+   printf("\n");
+
+   // Always free dynamically allocated memory when no longer needed
+   free(start);
+   free(end);
+   free(difference);
+
+   return 0;
+}

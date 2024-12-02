@@ -1,0 +1,31 @@
+#include<stdio.h>
+
+// Write a C program to convert decimal number to binary number, using while loop.
+
+int main()
+{
+    // given a decimal number, get % 2 to get on or off, then divide by 2 to go to the 
+    // next bit, then increment i to increment index of bit
+    int num, bit[32], i = 0;
+    
+    printf("Enter a decimal number: ");
+    scanf("%d", &num);
+    
+    while (num > 0) // stop when division reaches 0
+    {
+        bit[i] = num % 2; // bit (starting at LSB) is on or off
+        num = num / 2; // move on to the next bit 
+        i++; // move on to the next bit's index
+    }
+    
+    // print in reverse since we started with LSB
+    // i is the number of total iterations, start at total iterations - 1 (last index)
+    for (int j = i - 1; j >= 0; j--) // include 0 (last index)
+    {
+        printf("%d", bit[j]);
+    }
+    
+    
+    
+    return 0;
+}

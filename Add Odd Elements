@@ -1,0 +1,30 @@
+
+
+#include <stdio.h>
+
+int main()
+{
+    int size, addition=0;
+    int arr[20];
+    
+    printf("Enter a size: ");
+    scanf(" %d", &size);
+    printf("Enter %d numbers");
+    
+    for (int i = 0; i < size; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+    
+    for (int j = 0; j < size; j++)
+    {
+        if (arr[j] % 2 != 0)
+        {
+            addition += arr[j];
+        }
+    }
+    
+    printf("Additon of odd elements: %d", addition);
+
+    return 0;
+}

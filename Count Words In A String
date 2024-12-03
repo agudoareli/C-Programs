@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+
+int main()
+{
+   //Write a program in C to count the total number of words in a string.
+   char arr[50];
+   int counter = 0;
+   
+   printf("Enter a string: ");
+   fgets(arr, 50, stdin);
+   
+   for(int i = 0; arr[i] != '\0'; i++)
+   {
+       if(arr[i] == ' ' || arr[i] == '\n')
+            counter++;
+   }
+   
+   printf("Total words in string: %d", counter);
+
+    return 0;
+}

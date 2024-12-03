@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+
+int main()
+{
+   //Write a C program to swap two numbers using pointers.
+   
+   int *p1, *p2, num1, num2;
+   
+   printf("Enter two numbers: ");
+   scanf("%d%d", &num1, &num2);
+   
+   p1 = &num1;
+   p2 = &num2;
+   
+   printf("Before: %d %d\n", *p1, *p2);
+   
+   int *temp = p1;
+   p1 = p2;
+   p2 = temp;
+   
+   printf("After: %d %d", *p1, *p2);
+
+
+
+    return 0;
+}
